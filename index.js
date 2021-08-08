@@ -7,19 +7,6 @@
 // @match        http://*/*
 // @match        https://*/*
 // @icon         https://www.google.com/s2/favicons?domain=tampermonkey.net
+// @require      dist/0x-jerry.umd.js
 // @grant        none
-// @license      MIT
 // ==/UserScript==
-
-;
-(function() {
-  const siteFns = [
-    {
-      test: /agdm.tv/,
-      init() {
-      }
-    }
-  ];
-  const hit = siteFns.find((s) => s.test.test(location.hostname));
-  hit?.init();
-})();

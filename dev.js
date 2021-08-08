@@ -7,6 +7,8 @@
 // @match        http://*/*
 // @match        https://*/*
 // @icon         https://www.google.com/s2/favicons?domain=tampermonkey.net
+// @require      dist/0x-jerry.umd.js
 // @grant        none
-// @license      MIT
 // ==/UserScript==
+
+window.__0x_jerry_dev__ = true
