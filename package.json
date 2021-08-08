@@ -1,0 +1,17 @@
+{
+  "name": "monkey-script",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/0x-jerry/monkey-script.git",
+  "author": "Jerry Wang <x.jerry.wang@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "node build.js -w",
+    "build": "node build.js"
+  },
+  "devDependencies": {
+    "@types/node": "^16.4.13",
+    "cac": "^6.7.3",
+    "esbuild": "^0.12.19"
+  }
+}
