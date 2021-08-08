@@ -1,6 +1,3 @@
 {
-  "recommendations": [
-    "darxeal.tampermonkey-snippets",
-    "adpyke.vscode-userscript"
-  ]
+  "recommendations": ["adpyke.vscode-userscript", "johnsoncodehk.volar"]
 }

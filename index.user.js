@@ -9,7 +9,16 @@
 // @icon         https://www.google.com/s2/favicons?domain=tampermonkey.net
 // @downloadURL  https://raw.githubusercontent.com/0x-jerry/monkey-script/main/index.user.js
 
-// @grant        none
-
 // @require      dist/0x-jerry.umd.js
+
+// @resource     IMPORTED_CSS dist/style.css
+
+// @grant        GM_getResourceText
+// @grant        GM_addStyle
+
 // ==/UserScript==
+
+;(() => {
+  const css = GM_getResourceText('IMPORTED_CSS')
+  GM_addStyle(css)
+})()
