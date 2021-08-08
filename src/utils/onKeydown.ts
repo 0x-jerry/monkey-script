@@ -1,3 +1,5 @@
+import { whenDev } from '../config'
+
 interface KeyOption {
   key: KeyboardEvent['code']
   meta?: boolean
@@ -13,6 +15,10 @@ const events: Set<KeyboardEventListener> = new Set()
 const inputTags: string[] = ['INPUT', 'TEXTAREA']
 
 window.addEventListener('keydown', (e) => {
+  whenDev(() => {
+    console.log('keydown event', e)
+  })
+
   const isInput = inputTags.includes(document.activeElement?.nodeName || '')
   if (isInput && e.key !== 'Escape') {
     return
@@ -34,7 +40,6 @@ function _useKeydown(listener: (e: KeyboardEvent) => any, opt: KeyOption) {
       !!opt.ctrl === e.ctrlKey &&
       opt.key === e.key
 
-    console.log(e)
     if (hit) {
       listener(e)
     }

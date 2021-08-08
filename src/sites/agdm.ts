@@ -1,13 +1,14 @@
+import { whenDev } from '../config'
 import { ISiteEffectConfig } from '../globals'
 import { onKeydown } from '../utils/onKeydown'
 
 export const conf: ISiteEffectConfig = {
   test: /agdm\.tv/,
   fn() {
-    if (window.__0x_jerry_dev__) {
+    whenDev(() => {
       // @ts-ignore
       window.requestAnimationFrame = () => {}
-    }
+    })
 
     // next episode
     onKeydown('right', () => {
@@ -15,9 +16,9 @@ export const conf: ISiteEffectConfig = {
         '.tab-pane.active > ul > li > a.btn-warm'
       )
 
-      const el = current.parentElement.nextElementSibling
+      const el = current?.parentElement?.nextElementSibling
 
-      el?.querySelector('a').click()
+      el?.querySelector('a')?.click()
     })
 
     // pre episode
@@ -26,9 +27,9 @@ export const conf: ISiteEffectConfig = {
         '.tab-pane.active > ul > li > a.btn-warm'
       )
 
-      const el = current.parentElement.previousElementSibling
+      const el = current?.parentElement?.previousElementSibling
 
-      el?.querySelector('a').click()
+      el?.querySelector('a')?.click()
     })
   },
 }

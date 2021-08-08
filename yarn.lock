@@ -31,6 +31,47 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@iconify/json-tools@npm:^1.0.10":
+  version: 1.0.10
+  resolution: "@iconify/json-tools@npm:1.0.10::__archiveUrl=https%3A%2F%2Fregistry.nlark.com%2F%40iconify%2Fjson-tools%2Fdownload%2F%40iconify%2Fjson-tools-1.0.10.tgz"
+  checksum: 7fd6a8ca386176613242e2569ed89052858b34cd928297441a62214f482e3cf87f267b40025cd810a63f60ef187efcffc3c1e134f1b92f690b52ee37cd7f1708
+  languageName: node
+  linkType: hard
+
+"@iconify/json@npm:^1.1.384":
+  version: 1.1.384
+  resolution: "@iconify/json@npm:1.1.384::__archiveUrl=https%3A%2F%2Fregistry.nlark.com%2F%40iconify%2Fjson%2Fdownload%2F%40iconify%2Fjson-1.1.384.tgz"
+  checksum: e29ec83d3b6f7daa1de0c2e4a96dc09dfeb704cdadda935860fd603fb328d289b1ebb0174fe4956f59c5d8ec0226573f7ac21dddc9f534d8c5e378eb2e81a30c
+  languageName: node
+  linkType: hard
+
+"@nodelib/fs.scandir@npm:2.1.5":
+  version: 2.1.5
+  resolution: "@nodelib/fs.scandir@npm:2.1.5::__archiveUrl=https%3A%2F%2Fregistry.nlark.com%2F%40nodelib%2Ffs.scandir%2Fdownload%2F%40nodelib%2Ffs.scandir-2.1.5.tgz"
+  dependencies:
+    "@nodelib/fs.stat": 2.0.5
+    run-parallel: ^1.1.9
+  checksum: a970d595bd23c66c880e0ef1817791432dbb7acbb8d44b7e7d0e7a22f4521260d4a83f7f9fd61d44fda4610105577f8f58a60718105fb38352baed612fd79e59
+  languageName: node
+  linkType: hard
+
+"@nodelib/fs.stat@npm:2.0.5, @nodelib/fs.stat@npm:^2.0.2":
+  version: 2.0.5
+  resolution: "@nodelib/fs.stat@npm:2.0.5::__archiveUrl=https%3A%2F%2Fregistry.nlark.com%2F%40nodelib%2Ffs.stat%2Fdownload%2F%40nodelib%2Ffs.stat-2.0.5.tgz"
+  checksum: 012480b5ca9d97bff9261571dbbec7bbc6033f69cc92908bc1ecfad0792361a5a1994bc48674b9ef76419d056a03efadfce5a6cf6dbc0a36559571a7a483f6f0
+  languageName: node
+  linkType: hard
+
+"@nodelib/fs.walk@npm:^1.2.3":
+  version: 1.2.8
+  resolution: "@nodelib/fs.walk@npm:1.2.8::__archiveUrl=https%3A%2F%2Fregistry.nlark.com%2F%40nodelib%2Ffs.walk%2Fdownload%2F%40nodelib%2Ffs.walk-1.2.8.tgz"
+  dependencies:
+    "@nodelib/fs.scandir": 2.1.5
+    fastq: ^1.6.0
+  checksum: 190c643f156d8f8f277bf2a6078af1ffde1fd43f498f187c2db24d35b4b4b5785c02c7dc52e356497b9a1b65b13edc996de08de0b961c32844364da02986dc53
+  languageName: node
+  linkType: hard
+
 "@npmcli/move-file@npm:^1.0.1":
   version: 1.1.2
   resolution: "@npmcli/move-file@npm:1.1.2::__archiveUrl=https%3A%2F%2Fregistry.nlark.com%2F%40npmcli%2Fmove-file%2Fdownload%2F%40npmcli%2Fmove-file-1.1.2.tgz"
@@ -298,6 +339,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"braces@npm:^3.0.1":
+  version: 3.0.2
+  resolution: "braces@npm:3.0.2::__archiveUrl=https%3A%2F%2Fregistry.nlark.com%2Fbraces%2Fdownload%2Fbraces-3.0.2.tgz"
+  dependencies:
+    fill-range: ^7.0.1
+  checksum: e2a8e769a863f3d4ee887b5fe21f63193a891c68b612ddb4b68d82d1b5f3ff9073af066c343e9867a393fe4c2555dcb33e89b937195feb9c1613d259edfcd459
+  languageName: node
+  linkType: hard
+
 "buffer-indexof-polyfill@npm:~1.0.0":
   version: 1.0.2
   resolution: "buffer-indexof-polyfill@npm:1.0.2::__archiveUrl=https%3A%2F%2Fregistry.nlark.com%2Fbuffer-indexof-polyfill%2Fdownload%2Fbuffer-indexof-polyfill-1.0.2.tgz"
@@ -420,7 +470,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"debug@npm:4, debug@npm:^4.1.0":
+"debug@npm:4, debug@npm:^4.1.0, debug@npm:^4.3.2":
   version: 4.3.2
   resolution: "debug@npm:4.3.2::__archiveUrl=https%3A%2F%2Fregistry.nlark.com%2Fdebug%2Fdownload%2Fdebug-4.3.2.tgz"
   dependencies:
@@ -501,6 +551,37 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fast-glob@npm:^3.2.6":
+  version: 3.2.7
+  resolution: "fast-glob@npm:3.2.7::__archiveUrl=https%3A%2F%2Fregistry.nlark.com%2Ffast-glob%2Fdownload%2Ffast-glob-3.2.7.tgz"
+  dependencies:
+    "@nodelib/fs.stat": ^2.0.2
+    "@nodelib/fs.walk": ^1.2.3
+    glob-parent: ^5.1.2
+    merge2: ^1.3.0
+    micromatch: ^4.0.4
+  checksum: 2f4708ff112d2b451888129fdd9a0938db88b105b0ddfd043c064e3c4d3e20eed8d7c7615f7565fee660db34ddcf08a2db1bf0ab3c00b87608e4719694642d78
+  languageName: node
+  linkType: hard
+
+"fastq@npm:^1.6.0":
+  version: 1.11.1
+  resolution: "fastq@npm:1.11.1::__archiveUrl=https%3A%2F%2Fregistry.nlark.com%2Ffastq%2Fdownload%2Ffastq-1.11.1.tgz"
+  dependencies:
+    reusify: ^1.0.4
+  checksum: 3877a63bee4f63af9277d6169a766804c9e1c7829a070b6843c5b799aa72177e71465427889c96510e5608c334dd3c912ab0b3ca70c1c8c4c1b03449d9f2c5ba
+  languageName: node
+  linkType: hard
+
+"fill-range@npm:^7.0.1":
+  version: 7.0.1
+  resolution: "fill-range@npm:7.0.1::__archiveUrl=https%3A%2F%2Fregistry.nlark.com%2Ffill-range%2Fdownload%2Ffill-range-7.0.1.tgz"
+  dependencies:
+    to-regex-range: ^5.0.1
+  checksum: cc283f4e65b504259e64fd969bcf4def4eb08d85565e906b7d36516e87819db52029a76b6363d0f02d0d532f0033c9603b9e2d943d56ee3b0d4f7ad3328ff917
+  languageName: node
+  linkType: hard
+
 "fs-minipass@npm:^2.0.0":
   version: 2.1.0
   resolution: "fs-minipass@npm:2.1.0::__archiveUrl=https%3A%2F%2Fregistry.nlark.com%2Ffs-minipass%2Fdownload%2Ffs-minipass-2.1.0.tgz"
@@ -576,6 +657,15 @@ fsevents@~2.3.2:
   dependencies:
     loader-utils: ^1.1.0
   checksum: 5f2d6837dcddf4d7139f7c7ee4ff6ed82564123ae363aadc7a1c1c9967724da1e10d92c904b76b6ff58912465cf63cf47d87f3b400286845f289f54d5092e78f
+  languageName: node
+  linkType: hard
+
+"glob-parent@npm:^5.1.2":
+  version: 5.1.2
+  resolution: "glob-parent@npm:5.1.2::__archiveUrl=https%3A%2F%2Fregistry.nlark.com%2Fglob-parent%2Fdownload%2Fglob-parent-5.1.2.tgz"
+  dependencies:
+    is-glob: ^4.0.1
+  checksum: f4f2bfe2425296e8a47e36864e4f42be38a996db40420fe434565e4480e3322f18eb37589617a98640c5dc8fdec1a387007ee18dbb1f3f5553409c34d17f425e
   languageName: node
   linkType: hard
 
@@ -739,6 +829,13 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
+"is-extglob@npm:^2.1.1":
+  version: 2.1.1
+  resolution: "is-extglob@npm:2.1.1::__archiveUrl=https%3A%2F%2Fregistry.nlark.com%2Fis-extglob%2Fdownload%2Fis-extglob-2.1.1.tgz"
+  checksum: df033653d06d0eb567461e58a7a8c9f940bd8c22274b94bf7671ab36df5719791aae15eef6d83bbb5e23283967f2f984b8914559d4449efda578c775c4be6f85
+  languageName: node
+  linkType: hard
+
 "is-fullwidth-code-point@npm:^1.0.0":
   version: 1.0.0
   resolution: "is-fullwidth-code-point@npm:1.0.0::__archiveUrl=https%3A%2F%2Fregistry.nlark.com%2Fis-fullwidth-code-point%2Fdownload%2Fis-fullwidth-code-point-1.0.0.tgz"
@@ -755,10 +852,26 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
+"is-glob@npm:^4.0.1":
+  version: 4.0.1
+  resolution: "is-glob@npm:4.0.1::__archiveUrl=https%3A%2F%2Fregistry.nlark.com%2Fis-glob%2Fdownload%2Fis-glob-4.0.1.tgz"
+  dependencies:
+    is-extglob: ^2.1.1
+  checksum: 84627cad11b4e745f5db5a163f32c47b711585a5ff6e14f8f8d026db87f4cdd3e2c95f6fa1f94ad22e469f36d819ae2814f03f9c668b164422ac3354a94672d3
+  languageName: node
+  linkType: hard
+
 "is-lambda@npm:^1.0.1":
   version: 1.0.1
   resolution: "is-lambda@npm:1.0.1::__archiveUrl=https%3A%2F%2Fregistry.nlark.com%2Fis-lambda%2Fdownload%2Fis-lambda-1.0.1.tgz"
   checksum: 93a32f01940220532e5948538699ad610d5924ac86093fcee83022252b363eb0cc99ba53ab084a04e4fb62bf7b5731f55496257a4c38adf87af9c4d352c71c35
+  languageName: node
+  linkType: hard
+
+"is-number@npm:^7.0.0":
+  version: 7.0.0
+  resolution: "is-number@npm:7.0.0::__archiveUrl=https%3A%2F%2Fregistry.nlark.com%2Fis-number%2Fdownload%2Fis-number-7.0.0.tgz"
+  checksum: 456ac6f8e0f3111ed34668a624e45315201dff921e5ac181f8ec24923b99e9f32ca1a194912dc79d539c97d33dba17dc635202ff0b2cf98326f608323276d27a
   languageName: node
   linkType: hard
 
@@ -878,6 +991,23 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
+"merge2@npm:^1.3.0":
+  version: 1.4.1
+  resolution: "merge2@npm:1.4.1::__archiveUrl=https%3A%2F%2Fregistry.nlark.com%2Fmerge2%2Fdownload%2Fmerge2-1.4.1.tgz"
+  checksum: 7268db63ed5169466540b6fb947aec313200bcf6d40c5ab722c22e242f651994619bcd85601602972d3c85bd2cc45a358a4c61937e9f11a061919a1da569b0c2
+  languageName: node
+  linkType: hard
+
+"micromatch@npm:^4.0.4":
+  version: 4.0.4
+  resolution: "micromatch@npm:4.0.4::__archiveUrl=https%3A%2F%2Fregistry.nlark.com%2Fmicromatch%2Fdownload%2Fmicromatch-4.0.4.tgz"
+  dependencies:
+    braces: ^3.0.1
+    picomatch: ^2.2.3
+  checksum: ef3d1c88e79e0a68b0e94a03137676f3324ac18a908c245a9e5936f838079fcc108ac7170a5fadc265a9c2596963462e402841406bda1a4bb7b68805601d631c
+  languageName: node
+  linkType: hard
+
 "minimatch@npm:^3.0.4":
   version: 3.0.4
   resolution: "minimatch@npm:3.0.4::__archiveUrl=https%3A%2F%2Fregistry.nlark.com%2Fminimatch%2Fdownload%2Fminimatch-3.0.4.tgz"
@@ -988,6 +1118,7 @@ fsevents@~2.3.2:
   version: 0.0.0-use.local
   resolution: "monkey-script@workspace:."
   dependencies:
+    "@iconify/json": ^1.1.384
     "@types/lodash": ^4
     "@types/node": ^16.4.13
     "@vitejs/plugin-vue": ^1.2.5
@@ -995,6 +1126,8 @@ fsevents@~2.3.2:
     lodash: ^4.17.21
     typescript: ^4.3.2
     vite: ^2.4.4
+    vite-plugin-components: ^0.13.2
+    vite-plugin-icons: ^0.6.5
     vue: ^3.0.5
     vue-tsc: ^0.0.24
   languageName: unknown
@@ -1112,6 +1245,13 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
+"picomatch@npm:^2.2.3":
+  version: 2.3.0
+  resolution: "picomatch@npm:2.3.0::__archiveUrl=https%3A%2F%2Fregistry.nlark.com%2Fpicomatch%2Fdownload%2Fpicomatch-2.3.0.tgz"
+  checksum: 16818720ea7c5872b6af110760dee856c8e4cd79aed1c7a006d076b1cc09eff3ae41ca5019966694c33fbd2e1cc6ea617ab10e4adac6df06556168f13be3fca2
+  languageName: node
+  linkType: hard
+
 "postcss-modules-extract-imports@npm:^3.0.0":
   version: 3.0.0
   resolution: "postcss-modules-extract-imports@npm:3.0.0::__archiveUrl=https%3A%2F%2Fregistry.nlark.com%2Fpostcss-modules-extract-imports%2Fdownload%2Fpostcss-modules-extract-imports-3.0.0.tgz"
@@ -1226,6 +1366,13 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
+"queue-microtask@npm:^1.2.2":
+  version: 1.2.3
+  resolution: "queue-microtask@npm:1.2.3::__archiveUrl=https%3A%2F%2Fregistry.nlark.com%2Fqueue-microtask%2Fdownload%2Fqueue-microtask-1.2.3.tgz"
+  checksum: b676f8c040cdc5b12723ad2f91414d267605b26419d5c821ff03befa817ddd10e238d22b25d604920340fd73efd8ba795465a0377c4adf45a4a41e4234e42dc4
+  languageName: node
+  linkType: hard
+
 "readable-stream@npm:^2.0.2, readable-stream@npm:^2.0.6, readable-stream@npm:~2.3.6":
   version: 2.3.7
   resolution: "readable-stream@npm:2.3.7::__archiveUrl=https%3A%2F%2Fregistry.npm.taobao.org%2Freadable-stream%2Fdownload%2Freadable-stream-2.3.7.tgz"
@@ -1268,6 +1415,13 @@ resolve@^1.20.0:
   languageName: node
   linkType: hard
 
+"reusify@npm:^1.0.4":
+  version: 1.0.4
+  resolution: "reusify@npm:1.0.4::__archiveUrl=https%3A%2F%2Fregistry.nlark.com%2Freusify%2Fdownload%2Freusify-1.0.4.tgz"
+  checksum: c3076ebcc22a6bc252cb0b9c77561795256c22b757f40c0d8110b1300723f15ec0fc8685e8d4ea6d7666f36c79ccc793b1939c748bf36f18f542744a4e379fcc
+  languageName: node
+  linkType: hard
+
 "rimraf@npm:2":
   version: 2.7.1
   resolution: "rimraf@npm:2.7.1::__archiveUrl=https%3A%2F%2Fregistry.nlark.com%2Frimraf%2Fdownload%2Frimraf-2.7.1.tgz"
@@ -1301,6 +1455,15 @@ resolve@^1.20.0:
   bin:
     rollup: dist/bin/rollup
   checksum: d7258d2844a8ba750c028d94b30c8c9397a4d14eca15384b74e387930f0299bdde79f040af410fbb6f344429cf4484368606dd374b157f8fe2a06a38db1e2f79
+  languageName: node
+  linkType: hard
+
+"run-parallel@npm:^1.1.9":
+  version: 1.2.0
+  resolution: "run-parallel@npm:1.2.0::__archiveUrl=https%3A%2F%2Fregistry.nlark.com%2Frun-parallel%2Fdownload%2Frun-parallel-1.2.0.tgz"
+  dependencies:
+    queue-microtask: ^1.2.2
+  checksum: cb4f97ad25a75ebc11a8ef4e33bb962f8af8516bb2001082ceabd8902e15b98f4b84b4f8a9b222e5d57fc3bd1379c483886ed4619367a7680dad65316993021d
   languageName: node
   linkType: hard
 
@@ -1484,6 +1647,15 @@ resolve@^1.20.0:
   languageName: node
   linkType: hard
 
+"to-regex-range@npm:^5.0.1":
+  version: 5.0.1
+  resolution: "to-regex-range@npm:5.0.1::__archiveUrl=https%3A%2F%2Fregistry.nlark.com%2Fto-regex-range%2Fdownload%2Fto-regex-range-5.0.1.tgz"
+  dependencies:
+    is-number: ^7.0.0
+  checksum: f76fa01b3d5be85db6a2a143e24df9f60dd047d151062d0ba3df62953f2f697b16fe5dad9b0ac6191c7efc7b1d9dcaa4b768174b7b29da89d4428e64bc0a20ed
+  languageName: node
+  linkType: hard
+
 "traverse@npm:>=0.3.0 <0.4":
   version: 0.3.9
   resolution: "traverse@npm:0.3.9::__archiveUrl=https%3A%2F%2Fregistry.nlark.com%2Ftraverse%2Fdownload%2Ftraverse-0.3.9.tgz"
@@ -1554,6 +1726,39 @@ typescript@^4.3.2:
   languageName: node
   linkType: hard
 
+"vite-plugin-components@npm:^0.13.2":
+  version: 0.13.2
+  resolution: "vite-plugin-components@npm:0.13.2::__archiveUrl=https%3A%2F%2Fregistry.nlark.com%2Fvite-plugin-components%2Fdownload%2Fvite-plugin-components-0.13.2.tgz"
+  dependencies:
+    debug: ^4.3.2
+    fast-glob: ^3.2.6
+    magic-string: ^0.25.7
+    minimatch: ^3.0.4
+  peerDependencies:
+    vite: ^2.0.0
+  checksum: 54368e2f614f659a0f095e553516a3f7d67cea646aefd516d75d616e545626289791efe45e08ca84d5d06930b0dfc55a848fdd98a33bb23907a025c6110280eb
+  languageName: node
+  linkType: hard
+
+"vite-plugin-icons@npm:^0.6.5":
+  version: 0.6.5
+  resolution: "vite-plugin-icons@npm:0.6.5::__archiveUrl=https%3A%2F%2Fregistry.nlark.com%2Fvite-plugin-icons%2Fdownload%2Fvite-plugin-icons-0.6.5.tgz"
+  dependencies:
+    "@iconify/json-tools": ^1.0.10
+    vue-template-es2015-compiler: ^1.9.1
+  peerDependencies:
+    "@iconify/json": "*"
+    "@vue/compiler-sfc": ^3.0.2
+    vue-template-compiler: ^2.6.12
+  peerDependenciesMeta:
+    "@vue/compiler-sfc":
+      optional: true
+    vue-template-compiler:
+      optional: true
+  checksum: b662713b4c6be53e5d2c7cb6c7066438afc98731bd76c208a3a2e9cd9910f26d259a1429c3f7cbefd6ecd2da7fa0c09fd3a70dafc8aa5dda58a0d55beaa4789e
+  languageName: node
+  linkType: hard
+
 "vite@npm:^2.4.4":
   version: 2.4.4
   resolution: "vite@npm:2.4.4::__archiveUrl=https%3A%2F%2Fregistry.nlark.com%2Fvite%2Fdownload%2Fvite-2.4.4.tgz"
@@ -1569,6 +1774,13 @@ typescript@^4.3.2:
   bin:
     vite: bin/vite.js
   checksum: 075deeb5f915f2a0a2b2e90c6bcbe919b894b6004133e3280eb413dfb17aa1dd6b82aaf35451291f3ba572566f8948e62b32476ce39d5046eef6092106c80a8a
+  languageName: node
+  linkType: hard
+
+"vue-template-es2015-compiler@npm:^1.9.1":
+  version: 1.9.1
+  resolution: "vue-template-es2015-compiler@npm:1.9.1::__archiveUrl=https%3A%2F%2Fregistry.nlark.com%2Fvue-template-es2015-compiler%2Fdownload%2Fvue-template-es2015-compiler-1.9.1.tgz"
+  checksum: ad1e85662783be3ee262c323b05d12e6a5036fca24f16dc0f7ab92736b675919cb4fa4b79b28753eac73119b709d1b36789bf60e8ae423f50c4db35de9370e8b
   languageName: node
   linkType: hard
 
