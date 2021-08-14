@@ -6,7 +6,12 @@ import { createMsgSender, onMsg } from '../utils/conmunicate'
 import AgefansVue from './setting/Agefans.vue'
 
 export const conf: ISiteEffectConfig = {
-  test: [/agefans\.cc/, /shankuwang\.com/],
+  test: [
+    // main domain
+    /agefans\.cc/,
+    // iframe domain
+    /shankuwang\.com/,
+  ],
   fn() {
     if (isDev()) {
       unsafeWindow.onbeforeunload = () => {
