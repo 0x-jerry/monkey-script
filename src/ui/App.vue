@@ -1,20 +1,30 @@
 <template>
-  <div class="root">
-    <div class="setting-icon">
-      <i-ph-gear class="gear" />
-    </div>
+  <div class="root" :class="{ active: data.isActive }">
     <div class="setting-content">
-      <component is="setting-content"></component>
+      <div class="setting-icon" @click="data.isActive = !data.isActive">
+        <i-ph-gear class="gear" />
+      </div>
+      <div class="content-wrapper">
+        <component is="setting-content"></component>
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { reactive } from '@vue/reactivity'
+import { isDev } from '../config'
+import { onKeydown } from '../utils/onKeydown'
 
 const data = reactive({
-  msg: 'msg',
+  isActive: isDev(),
 })
+
+function toggle() {
+  data.isActive = !data.isActive
+}
+
+onKeydown('meta + .', toggle)
 </script>
 
 <style scoped>
@@ -24,26 +34,43 @@ const data = reactive({
   left: 0px;
 }
 
+.content-wrapper {
+  padding: 5px;
+  border: 1px solid #888;
+}
+
+.setting-content {
+  position: relative;
+  transform: translateX(-100%);
+  transition: transform ease 0.4s;
+}
+
+.root.active .setting-content {
+  transform: translateX(0);
+}
+
 .setting-icon {
   cursor: pointer;
-  background: rgb(233, 233, 233);
-  border: 1px solid #b1b1b1;
+  background: #fff;
+  padding: 2px;
+  color: #444;
+  border: 1px solid #333;
+
   display: flex;
   align-items: center;
   justify-content: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translateX(100%);
 }
 
 .setting-icon:hover {
-  border: 1px solid #727272;
+  color: #555;
 }
 
 .gear {
   font-size: 20px;
   transition: transform ease 1s;
-  transform: rotate(0deg);
-}
-
-.setting-icon:hover .gear {
-  transform: rotate(360deg);
 }
 </style>

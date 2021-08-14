@@ -10,6 +10,7 @@
     "build": "vite build"
   },
   "dependencies": {
+    "@0x-jerry/lib": "^0.2.0",
     "lodash": "^4.17.21",
     "vue": "^3.0.5"
   },

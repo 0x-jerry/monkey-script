@@ -5,6 +5,13 @@ __metadata:
   version: 4
   cacheKey: 8
 
+"@0x-jerry/lib@npm:^0.2.0":
+  version: 0.2.0
+  resolution: "@0x-jerry/lib@npm:0.2.0::__archiveUrl=https%3A%2F%2Fregistry.nlark.com%2F%400x-jerry%2Flib%2Fdownload%2F%400x-jerry%2Flib-0.2.0.tgz"
+  checksum: fbea429e4151c12baae5c8e8b572a5084642027d2f4f80f49ba4f8a7c1b173cdf6fc554ff0af7d5969e2c9cffc936157be5a5e77375526060740c4ff4bb2d96b
+  languageName: node
+  linkType: hard
+
 "@babel/helper-validator-identifier@npm:^7.14.9":
   version: 7.14.9
   resolution: "@babel/helper-validator-identifier@npm:7.14.9::__archiveUrl=https%3A%2F%2Fregistry.nlark.com%2F%40babel%2Fhelper-validator-identifier%2Fdownload%2F%40babel%2Fhelper-validator-identifier-7.14.9.tgz"
@@ -1118,6 +1125,7 @@ fsevents@~2.3.2:
   version: 0.0.0-use.local
   resolution: "monkey-script@workspace:."
   dependencies:
+    "@0x-jerry/lib": ^0.2.0
     "@iconify/json": ^1.1.384
     "@types/lodash": ^4
     "@types/node": ^16.4.13
