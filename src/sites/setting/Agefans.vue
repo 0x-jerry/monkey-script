@@ -52,9 +52,7 @@ const [conf] = getConfig({
 })
 
 onMounted(() => {
-  if (conf.skip.enable) {
-    enableAutoPlay()
-  }
+  initAutoPlay()
 })
 
 function playNextVideo() {
@@ -66,7 +64,7 @@ function playNextVideo() {
   )?.click()
 }
 
-function enableAutoPlay() {
+function initAutoPlay() {
   const iframe = document.querySelector('iframe')
 
   onMsg('iframe-loaded', (origin) => {

@@ -20,9 +20,7 @@ export const conf: ISiteEffectConfig = {
       }
     }
 
-    const isMain = mainDomain.test(location.host)
-
-    if (!isMain) {
+    if (isInIFrame()) {
       onMsg('init', (conf: IConfig) => {
         const handler = setInterval(() => {
           const video = document.querySelector('video')
