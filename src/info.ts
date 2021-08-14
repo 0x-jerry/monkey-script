@@ -1,9 +1,10 @@
 import { isDev } from './config'
+import { logger } from './utils'
 
 export function buildInfo() {
   if (isDev()) {
-    console.log('// [DEV] Useful script loaded.')
+    logger.log('// [DEV] Useful script loaded.')
   } else {
-    console.log('// [PROD] Useful script loaded.')
+    logger.log('// [PROD] Useful script loaded.')
   }
 }

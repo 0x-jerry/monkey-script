@@ -98,6 +98,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/clone@npm:^2":
+  version: 2.1.1
+  resolution: "@types/clone@npm:2.1.1::__archiveUrl=https%3A%2F%2Fregistry.nlark.com%2F%40types%2Fclone%2Fdownload%2F%40types%2Fclone-2.1.1.tgz"
+  checksum: bda9668b9d6e0875d64bbe00763676f566e8647bc224333a03ac7fd66655dfed56a98a9f8304d0145c4411b964649c84c4d1a03adbdb6547eafb9ab8f303d254
+  languageName: node
+  linkType: hard
+
 "@types/estree@npm:^0.0.48":
   version: 0.0.48
   resolution: "@types/estree@npm:0.0.48::__archiveUrl=https%3A%2F%2Fregistry.nlark.com%2F%40types%2Festree%2Fdownload%2F%40types%2Festree-0.0.48.tgz"
@@ -416,6 +423,13 @@ __metadata:
   version: 2.2.0
   resolution: "clean-stack@npm:2.2.0::__archiveUrl=https%3A%2F%2Fregistry.nlark.com%2Fclean-stack%2Fdownload%2Fclean-stack-2.2.0.tgz"
   checksum: 2ac8cd2b2f5ec986a3c743935ec85b07bc174d5421a5efc8017e1f146a1cf5f781ae962618f416352103b32c9cd7e203276e8c28241bbe946160cab16149fb68
+  languageName: node
+  linkType: hard
+
+"clone@npm:^2.1.2":
+  version: 2.1.2
+  resolution: "clone@npm:2.1.2::__archiveUrl=https%3A%2F%2Fregistry.nlark.com%2Fclone%2Fdownload%2Fclone-2.1.2.tgz"
+  checksum: aaf106e9bc025b21333e2f4c12da539b568db4925c0501a1bf4070836c9e848c892fa22c35548ce0d1132b08bbbfa17a00144fe58fccdab6fa900fec4250f67d
   languageName: node
   linkType: hard
 
@@ -1237,10 +1251,12 @@ fsevents@~2.3.2:
   dependencies:
     "@0x-jerry/lib": ^0.2.5
     "@iconify/json": ^1.1.384
+    "@types/clone": ^2
     "@types/lodash": ^4
     "@types/node": ^16.4.13
     "@vitejs/plugin-vue": ^1.2.5
     "@vue/compiler-sfc": ^3.0.5
+    clone: ^2.1.2
     less: ^4.1.1
     lodash: ^4.17.21
     typescript: ^4.3.2

@@ -11,11 +11,13 @@
   },
   "dependencies": {
     "@0x-jerry/lib": "^0.2.5",
+    "clone": "^2.1.2",
     "lodash": "^4.17.21",
     "vue": "^3.0.5"
   },
   "devDependencies": {
     "@iconify/json": "^1.1.384",
+    "@types/clone": "^2",
     "@types/lodash": "^4",
     "@types/node": "^16.4.13",
     "@vitejs/plugin-vue": "^1.2.5",

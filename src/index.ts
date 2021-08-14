@@ -1,6 +1,6 @@
 import { ISiteEffectConfig } from './globals'
 import { buildInfo } from './info'
-import { start } from './utils/index'
+import { start, toArray } from './utils/index'
 
 start(async () => {
   buildInfo()
@@ -11,7 +11,9 @@ start(async () => {
 
   const siteFns: ISiteEffectConfig[] = modules
 
-  const hit = siteFns.find((s) => s.test.test(location.hostname))
+  const hit = siteFns.find(
+    (s) => !!toArray(s.test).find((t) => t.test(location.hostname))
+  )
 
   hit?.fn()
 })

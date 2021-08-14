@@ -18,6 +18,8 @@
 
 // ==/UserScript==
 
+unsafeWindow.__0x_jerry_prod__ = true
+window.__0x_jerry_prod__ = true
 ;(() => {
   const css = GM_getResourceText('IMPORTED_CSS')
   GM_addStyle(css)

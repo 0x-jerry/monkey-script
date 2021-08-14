@@ -29,8 +29,11 @@
 
 <script setup lang="ts">
 import { reactive } from '@vue/reactivity'
+import clone from 'clone'
 import { onMounted } from '@vue/runtime-core'
+import { isDev } from '../../config'
 import { logger } from '../../utils'
+import { createMsgSender, onMsg } from '../../utils/conmunicate'
 import { getConfig } from '../../utils/siteConf'
 
 const [conf] = getConfig({
@@ -55,9 +58,7 @@ onMounted(() => {
 })
 
 function playNextVideo() {
-  const current = unsafeWindow.document.querySelector(
-    '.movurl[style*=block] ul li a[style]'
-  )
+  const current = document.querySelector('.movurl[style*=block] ul li a[style]')
 
   ;(
     current?.parentElement?.nextElementSibling
@@ -65,37 +66,19 @@ function playNextVideo() {
   )?.click()
 }
 
-function initVideo(video: HTMLVideoElement) {
-  if (conf.autoPlay && video.paused) {
-    video.play()
-  }
-
-  video.addEventListener('timeupdate', () => {
-    if (conf.skip.enable) {
-      if (video.currentTime < conf.skip.beforeSkipTs) {
-        video.currentTime = conf.skip.beforeSkipTs
-      }
-
-      const restTime = video.duration - video.currentTime
-
-      if (restTime < conf.skip.afterSkipTs) {
-        playNextVideo()
-      }
-    }
-  })
-}
-
 function enableAutoPlay() {
-  const iframeWindow =
-    unsafeWindow.document.querySelector('iframe')?.contentWindow
+  const iframe = document.querySelector('iframe')
 
-  const hanlder = setInterval(() => {
-    const video = iframeWindow?.document.querySelector('video') as any
+  onMsg('iframe-loaded', (origin) => {
+    const sendMsg = createMsgSender(iframe?.contentWindow!, origin)
 
-    if (video) {
-      clearInterval(hanlder)
-      initVideo(video)
-    }
-  }, 1000)
+    sendMsg('init', clone(conf))
+  })
+
+  onMsg('play-next-video', () => {
+    playNextVideo()
+  })
+
+  return
 }
 </script>
