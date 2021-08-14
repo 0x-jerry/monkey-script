@@ -5,10 +5,11 @@ import { isInIFrame, logger } from '../utils'
 import { createMsgSender, onMsg } from '../utils/conmunicate'
 import AgefansVue from './setting/Agefans.vue'
 
+const mainDomain = /agefans\.cc/
 export const conf: ISiteEffectConfig = {
   test: [
     // main domain
-    /agefans\.cc/,
+    mainDomain,
     // iframe domain
     /shankuwang\.com/,
   ],
@@ -19,7 +20,9 @@ export const conf: ISiteEffectConfig = {
       }
     }
 
-    if (isInIFrame()) {
+    const isMain = mainDomain.test(location.host)
+
+    if (!isMain) {
       onMsg('init', (conf: IConfig) => {
         const handler = setInterval(() => {
           const video = document.querySelector('video')
@@ -39,16 +42,20 @@ export const conf: ISiteEffectConfig = {
 
       function initVideo(video: HTMLVideoElement, conf: IConfig) {
         const autoPlay = () => {
-          if (conf.autoPlay && video.paused) {
-            video.play()
+          if (!conf.autoPlay) {
+            return
           }
+
+          const handler = setInterval(() => {
+            if (video.paused && video.currentTime < 1) {
+              video.play()
+            } else if (video.currentTime > 1) {
+              clearInterval(handler)
+            }
+          }, 500)
         }
 
-        if (video.readyState == video.HAVE_ENOUGH_DATA) {
-          autoPlay()
-        }
-
-        video.addEventListener('load', () => autoPlay())
+        autoPlay()
 
         video.addEventListener('timeupdate', () => {
           if (conf.skip.enable) {
