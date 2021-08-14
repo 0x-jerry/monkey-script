@@ -12,5 +12,6 @@ start(async () => {
   const siteFns: ISiteEffectConfig[] = modules
 
   const hit = siteFns.find((s) => s.test.test(location.hostname))
+
   hit?.fn()
 })

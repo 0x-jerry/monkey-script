@@ -1,10 +1,16 @@
 <template>
   <div class="root" :class="{ active: data.isActive }">
     <div class="setting-content">
-      <div class="setting-icon" @click="data.isActive = !data.isActive">
+      <div class="setting-icon" @click="toggle">
         <i-ph-gear class="gear" />
       </div>
       <div class="content-wrapper">
+        <div v-if="isDev()">
+          <div>
+            <button @click="clearSiteConfig">删除配置</button>
+          </div>
+          <br />
+        </div>
         <component is="setting-content"></component>
       </div>
     </div>
@@ -14,7 +20,9 @@
 <script lang="ts" setup>
 import { reactive } from '@vue/reactivity'
 import { isDev } from '../config'
+import { logger } from '../utils'
 import { onKeydown } from '../utils/onKeydown'
+import { clearSiteConfig } from '../utils/siteConf'
 
 const data = reactive({
   isActive: isDev(),
@@ -27,50 +35,68 @@ function toggle() {
 onKeydown('meta + .', toggle)
 </script>
 
-<style scoped>
+<style lang="less">
+.root {
+  * {
+    color: #333;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  input {
+    background: #fff;
+  }
+}
+</style>
+
+<style lang="less" scoped>
 .root {
   position: fixed;
   top: 50vh;
   left: 0px;
-}
+  color: #333;
 
-.content-wrapper {
-  padding: 5px;
-  border: 1px solid #888;
-}
+  .content-wrapper {
+    padding: 5px;
+    background: #fff;
+    border: 1px solid #888;
+  }
 
-.setting-content {
-  position: relative;
-  transform: translateX(-100%);
-  transition: transform ease 0.4s;
-}
+  .setting-content {
+    position: relative;
+    transform: translateX(-100%);
+    transition: transform ease 0.4s;
+  }
 
-.root.active .setting-content {
-  transform: translateX(0);
-}
+  &.active .setting-content {
+    transform: translateX(0);
+  }
 
-.setting-icon {
-  cursor: pointer;
-  background: #fff;
-  padding: 2px;
-  color: #444;
-  border: 1px solid #333;
+  .setting-icon {
+    cursor: pointer;
+    background: #fff;
+    padding: 2px;
+    color: #444;
+    border: 1px solid #333;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  top: 0;
-  right: 0;
-  transform: translateX(100%);
-}
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translateX(100%);
+  }
 
-.setting-icon:hover {
-  color: #555;
-}
+  .setting-icon:hover {
+    color: #555;
+  }
 
-.gear {
-  font-size: 20px;
-  transition: transform ease 1s;
+  .gear {
+    font-size: 20px;
+    transition: transform ease 1s;
+  }
 }
 </style>
