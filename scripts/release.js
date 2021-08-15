@@ -5,7 +5,7 @@ const semver = require('semver')
 
 pkg.version = semver.inc(pkg.version, 'patch')
 
-const tpl = (dist) => `// ==UserScript==
+const tpl = `// ==UserScript==
 // @name         Useful Script
 // @namespace    http://tampermonkey.net/
 // @version      ${pkg.version}
@@ -15,6 +15,8 @@ const tpl = (dist) => `// ==UserScript==
 // @match        https://*/*
 // @icon         https://www.google.com/s2/favicons?domain=tampermonkey.net
 // @downloadURL  https://raw.githubusercontent.com/0x-jerry/monkey-script/main/index.user.js
+
+// @require      dist/0x-jerry.umd.js
 
 // @resource     IMPORTED_CSS dist/style.css
 
@@ -29,19 +31,14 @@ window.__0x_jerry_prod__ = true
   const css = GM_getResourceText('IMPORTED_CSS')
   GM_addStyle(css)
 })();
-${dist}
 `
 
 main()
 
 async function main() {
   await fs.writeFile(path.resolve('package.json'), JSON.stringify(pkg, null, 2))
-  const content = await fs.readFile(path.resolve('dist/0x-jerry.umd.js'), {
-    encoding: 'utf-8',
-  })
 
-  const file = tpl(content)
-  await fs.writeFile(path.resolve('index.user.js'), file, {
+  await fs.writeFile(path.resolve('index.user.js'), tpl, {
     encoding: 'utf-8',
   })
 }
