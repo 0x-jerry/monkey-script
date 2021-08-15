@@ -29,8 +29,9 @@ export function tryParseJson(o: string) {
 
 export async function waitUntil(check: () => boolean, frequency = 500) {
   return new Promise<void>((resolve) => {
-    setInterval(() => {
+    const handler = setInterval(() => {
       if (check()) {
+        clearInterval(handler)
         resolve()
       }
     }, frequency)
