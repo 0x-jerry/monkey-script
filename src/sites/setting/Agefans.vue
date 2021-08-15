@@ -1,8 +1,10 @@
 <template>
   <div>
     <div>
-      <input type="checkbox" v-model="conf.autoPlay" />
-      <span> 自动播放 </span>
+      <label>
+        <input type="checkbox" v-model="conf.autoPlay" />
+        <span> 自动播放 </span>
+      </label>
     </div>
     <div class="group">
       <div>
@@ -32,7 +34,7 @@ import { reactive } from '@vue/reactivity'
 import clone from 'clone'
 import { onMounted } from '@vue/runtime-core'
 import { isDev } from '../../config'
-import { logger } from '../../utils'
+import { logger, waitUntil } from '../../utils'
 import { createMsgSender, onMsg } from '../../utils/conmunicate'
 import { getConfig } from '../../utils/siteConf'
 
@@ -64,14 +66,16 @@ function playNextVideo() {
   )?.click()
 }
 
-function initAutoPlay() {
+async function initAutoPlay() {
   const iframe = document.querySelector('iframe')
 
-  onMsg('iframe-loaded', (origin) => {
-    const sendMsg = createMsgSender(iframe?.contentWindow!, origin)
+  await waitUntil(() => !!iframe?.src)
 
-    sendMsg('init', clone(conf))
-  })
+  const origin = new URL(iframe!.src).origin
+
+  const sendMsg = createMsgSender(iframe!.contentWindow!, origin)
+
+  sendMsg('init', location.origin, clone(conf))
 
   onMsg('play-next-video', () => {
     playNextVideo()

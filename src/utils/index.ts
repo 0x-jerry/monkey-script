@@ -26,3 +26,13 @@ export function tryParseJson(o: string) {
     return o
   }
 }
+
+export async function waitUntil(check: () => boolean, frequency = 500) {
+  return new Promise<void>((resolve) => {
+    setInterval(() => {
+      if (check()) {
+        resolve()
+      }
+    }, frequency)
+  })
+}

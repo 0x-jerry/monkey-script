@@ -1,11 +1,12 @@
 import { isDev } from '../config'
 import { ISiteEffectConfig } from '../globals'
 import { useSettingUI } from '../ui/render'
-import { isInIFrame, logger } from '../utils'
+import { isInIFrame, logger, waitUntil } from '../utils'
 import { createMsgSender, onMsg } from '../utils/conmunicate'
 import AgefansVue from './setting/Agefans.vue'
 
 const mainDomain = /agefans\.(cc|vip)/
+
 export const conf: ISiteEffectConfig = {
   test: [
     // main domain
@@ -21,24 +22,13 @@ export const conf: ISiteEffectConfig = {
     }
 
     if (isInIFrame()) {
-      onMsg('init', (conf: IConfig) => {
-        const handler = setInterval(() => {
-          const video = document.querySelector('video')
-          if (video) {
-            clearInterval(handler)
-            initVideo(video, conf)
-          }
-        })
-      })
+      onMsg('init', async (origin: string, conf: IConfig) => {
+        const sendMsg = createMsgSender(unsafeWindow.top, origin)
 
-      const sendMsg = createMsgSender(
-        unsafeWindow.top,
-        'https://www.agefans.cc'
-      )
+        await waitUntil(() => !!document.querySelector('video'))
 
-      sendMsg('iframe-loaded', location.origin)
+        const video = document.querySelector('video')!
 
-      function initVideo(video: HTMLVideoElement, conf: IConfig) {
         const autoPlay = () => {
           if (!conf.autoPlay) {
             return
@@ -72,7 +62,7 @@ export const conf: ISiteEffectConfig = {
             }
           }
         })
-      }
+      })
     }
 
     useSettingUI(AgefansVue)
