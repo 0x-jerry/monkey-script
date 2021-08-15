@@ -5,7 +5,7 @@ import { isInIFrame, logger } from '../utils'
 import { createMsgSender, onMsg } from '../utils/conmunicate'
 import AgefansVue from './setting/Agefans.vue'
 
-const mainDomain = /agefans\.cc/
+const mainDomain = /agefans\.(cc|vip)/
 export const conf: ISiteEffectConfig = {
   test: [
     // main domain
