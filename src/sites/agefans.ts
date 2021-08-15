@@ -22,7 +22,11 @@ export const conf: ISiteEffectConfig = {
     }
 
     if (isInIFrame()) {
+      let initialized = false
       onMsg('init', async (origin: string, conf: IConfig) => {
+        if (initialized) return
+        initialized = true
+
         const sendMsg = createMsgSender(unsafeWindow.top, origin)
 
         await waitUntil(() => !!document.querySelector('video'))

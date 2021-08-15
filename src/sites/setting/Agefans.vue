@@ -67,15 +67,18 @@ function playNextVideo() {
 }
 
 async function initAutoPlay() {
-  const iframe = document.querySelector('iframe')
+  const iframe = document.querySelector('iframe')!
 
-  await waitUntil(() => !!iframe?.src)
+  await waitUntil(() => !!iframe.src)
 
-  const origin = new URL(iframe!.src).origin
+  const origin = new URL(iframe.src).origin
 
-  const sendMsg = createMsgSender(iframe!.contentWindow!, origin)
-
+  const sendMsg = createMsgSender(iframe.contentWindow!, origin)
   sendMsg('init', location.origin, clone(conf))
+
+  iframe.addEventListener('load', () => {
+    sendMsg('init', location.origin, clone(conf))
+  })
 
   onMsg('play-next-video', () => {
     playNextVideo()
