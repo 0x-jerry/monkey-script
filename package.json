@@ -7,7 +7,8 @@
   "packageManager": "yarn@3.0.1-rc.1",
   "scripts": {
     "dev": "vite build -m dev",
-    "build": "vite build"
+    "build": "vite build",
+    "release": "sh scripts/release.sh"
   },
   "dependencies": {
     "@0x-jerry/lib": "^0.2.5",

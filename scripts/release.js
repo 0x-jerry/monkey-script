@@ -5,8 +5,7 @@ const semver = require('semver')
 
 pkg.version = semver.inc(pkg.version, 'patch')
 
-const tpl = `
-// ==UserScript==
+const tpl = `// ==UserScript==
 // @name         Useful Script
 // @namespace    http://tampermonkey.net/
 // @version      ${pkg.version}
@@ -37,12 +36,9 @@ window.__0x_jerry_prod__ = true
 main()
 
 async function main() {
-  await fs.writeFile(
-    path.join(__dirname, 'package.json'),
-    JSON.stringify(pkg, null, 2)
-  )
+  await fs.writeFile(path.resolve('package.json'), JSON.stringify(pkg, null, 2))
 
-  await fs.writeFile(path.join(__dirname, '../index.user.js'), tpl, {
+  await fs.writeFile(path.resolve('index.user.js'), tpl, {
     encoding: 'utf-8',
   })
 }
