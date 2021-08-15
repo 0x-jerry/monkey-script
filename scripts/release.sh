@@ -1,7 +1,5 @@
-yarn version --patch
-
-yarn build
 node scripts/release.js
+yarn build
 
 git add .
 git commit -m 'chore: release'

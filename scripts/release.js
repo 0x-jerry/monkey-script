@@ -1,6 +1,6 @@
 const pkg = require('../package.json')
 const fs = require('fs/promises')
-const path = require('path/posix')
+const path = require('path')
 const semver = require('semver')
 
 pkg.version = semver.inc(pkg.version, 'patch')
