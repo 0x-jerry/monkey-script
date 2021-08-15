@@ -1,5 +1,5 @@
-node scripts/release.js
 yarn build
+node scripts/release.js
 
 git add .
 git commit -m 'chore: release'
