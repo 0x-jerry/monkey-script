@@ -56,12 +56,16 @@ export const conf: ISiteEffectConfig = {
         autoPlay()
 
         video.addEventListener('timeupdate', () => {
+          const restTime = video.duration - video.currentTime
+
+          if (conf.autoPlay && restTime < 1) {
+            sendMsg('play-next-video')
+          }
+
           if (conf.skip.enable) {
             if (video.currentTime < conf.skip.beforeSkipTs) {
               video.currentTime = conf.skip.beforeSkipTs
             }
-
-            const restTime = video.duration - video.currentTime
 
             if (restTime < conf.skip.afterSkipTs) {
               sendMsg('play-next-video')
