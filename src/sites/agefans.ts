@@ -3,6 +3,8 @@ import { ISiteEffectConfig } from '../globals'
 import { useSettingUI } from '../ui/render'
 import { isInIFrame, logger, waitUntil } from '../utils'
 import { createMsgSender, onMsg } from '../utils/conmunicate'
+import { IVideoHelperConfig } from '../video-helper/typing'
+import { initAutoPlay, initSkip } from '../video-helper/videoHelper'
 import AgefansVue from './setting/Agefans.vue'
 
 const mainDomain = /agefans\.(cc|vip)/
@@ -23,7 +25,7 @@ export const conf: ISiteEffectConfig = {
 
     if (isInIFrame()) {
       let initialized = false
-      onMsg('init', async (origin: string, conf: IConfig) => {
+      onMsg('init', async (origin: string, conf: IVideoHelperConfig) => {
         if (initialized) return
         initialized = true
 
@@ -33,57 +35,12 @@ export const conf: ISiteEffectConfig = {
 
         const video = document.querySelector('video')!
 
-        const autoPlay = () => {
-          if (!conf.autoPlay) {
-            return
-          }
+        initAutoPlay(video, conf)
 
-          const handler = setInterval(() => {
-            if (video.paused && video.currentTime < 1) {
-              video.play()
-            } else if (video.currentTime > 1) {
-              clearInterval(handler)
-            }
-          }, 500)
-        }
-
-        autoPlay()
-
-        video.addEventListener('timeupdate', () => {
-          const restTime = video.duration - video.currentTime
-
-          if (conf.autoPlay && restTime < 1) {
-            sendMsg('play-next-video')
-          }
-
-          if (conf.skip.enable) {
-            if (video.currentTime < conf.skip.beforeSkipTs) {
-              video.currentTime = conf.skip.beforeSkipTs
-            }
-
-            if (restTime < conf.skip.afterSkipTs) {
-              sendMsg('play-next-video')
-            }
-          }
-        })
+        initSkip(video, conf, () => sendMsg('play-next-video'))
       })
     }
 
     useSettingUI(AgefansVue)
   },
-}
-
-export interface IConfig {
-  autoPlay: boolean
-  skip: {
-    enable: boolean
-    /**
-     * 跳过片头
-     * */
-    beforeSkipTs: number
-    /**
-     * 跳过片尾
-     * */
-    afterSkipTs: number
-  }
 }

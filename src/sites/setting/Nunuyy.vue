@@ -1,5 +1,5 @@
 <template>
-  <VideoHelper @init="init" />
+  <VideoHelper @init="initAutoPlay" />
 </template>
 
 <script setup lang="ts">
@@ -17,7 +17,7 @@ function playNextVideo() {
   )?.click()
 }
 
-async function init(conf: IVideoHelperConfig) {
+async function initAutoPlay(conf: IVideoHelperConfig) {
   const iframe = document.querySelector('iframe')!
 
   await waitUntil(() => !!iframe.src)
