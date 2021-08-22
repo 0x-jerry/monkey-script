@@ -1,5 +1,6 @@
 import { sleep } from '@0x-jerry/lib'
 import { IVideoHelperConfig } from './typing'
+import VideoHelperVue from './VideoHelper.vue'
 
 export function initAutoPlay(
   video: HTMLVideoElement,
@@ -52,3 +53,7 @@ export function initSkip(
     }
   })
 }
+
+export const VideoHelper = VideoHelperVue
+
+export * from './typing.d'

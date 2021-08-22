@@ -1,40 +1,25 @@
 <template>
-  <VideoHelper @init="initAutoPlay" />
+  <VideoHelper @init="init" />
 </template>
 
 <script setup lang="ts">
-import clone from 'clone'
 import { waitUntil } from '../../utils'
-import { createMsgSender, onMsg } from '../../utils/conmunicate'
 import { IVideoHelperConfig } from '../../video-helper/typing'
+import { initAutoPlay, initSkip, VideoHelper } from '../../video-helper'
 
-function playNextVideo() {
-  const current = document.querySelector('.movurl[style*=block] ul li a[style]')
+async function init(conf: IVideoHelperConfig) {
+  await waitUntil(() => !!document.querySelector('video'))
 
-  ;(
-    current?.parentElement?.nextElementSibling
-      ?.firstElementChild as HTMLDivElement
-  )?.click()
-}
+  const video = document.querySelector('video')!
 
-async function initAutoPlay(conf: IVideoHelperConfig) {
-  const iframe = document.querySelector('iframe')!
+  initAutoPlay(video, conf)
 
-  await waitUntil(() => !!iframe.src)
+  initSkip(video, conf, () => {
+    const next = document.querySelector('.playlists ul li.on + li')
 
-  const origin = new URL(iframe.src).origin
+    const nextLink = next?.firstChild as HTMLLinkElement | null
 
-  const sendMsg = createMsgSender(iframe.contentWindow!, origin)
-  sendMsg('init', location.origin, clone(conf))
-
-  iframe.addEventListener('load', () => {
-    sendMsg('init', location.origin, clone(conf))
+    nextLink?.click()
   })
-
-  onMsg('play-next-video', () => {
-    playNextVideo()
-  })
-
-  return
 }
 </script>

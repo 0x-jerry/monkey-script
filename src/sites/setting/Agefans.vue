@@ -6,7 +6,7 @@
 import clone from 'clone'
 import { waitUntil } from '../../utils'
 import { createMsgSender, onMsg } from '../../utils/conmunicate'
-import { IVideoHelperConfig } from '../../video-helper/typing'
+import { IVideoHelperConfig, VideoHelper } from '../../video-helper'
 
 function playNextVideo() {
   const current = document.querySelector('.movurl[style*=block] ul li a[style]')
