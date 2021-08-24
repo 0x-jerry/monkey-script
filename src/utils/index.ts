@@ -16,7 +16,7 @@ export const start = async (fn: () => any) => {
 }
 
 export function isInIFrame() {
-  return unsafeWindow.parent !== unsafeWindow
+  return unsafeWindow.top !== unsafeWindow
 }
 
 export function tryParseJson(o: string) {

@@ -54,3 +54,9 @@ onMounted(() => {
   emit('init', conf)
 })
 </script>
+
+<style scoped>
+input[type='checkbox'] {
+  appearance: button;
+}
+</style>

@@ -1,4 +1,5 @@
 import { EventEmitter } from '@0x-jerry/lib'
+import { isInIFrame, logger } from '.'
 
 const ProtocolKey = '__0x_user_script__'
 const event = new EventEmitter()
@@ -10,6 +11,7 @@ unsafeWindow.addEventListener(
       return
     }
 
+    logger.log(`[${location.hostname}:${isInIFrame()}] receive:`, data)
     event.emit(data.type, ...data.data)
   },
   false
@@ -22,14 +24,14 @@ export const onMsg = (type: string, listener: (...params: any[]) => void) => {
 export const createMsgSender =
   (win: Window, origin: string) =>
   (type: string, ...params: any[]) => {
-    win.postMessage(
-      {
-        protocol: ProtocolKey,
-        type: type,
-        data: params,
-      },
-      origin
-    )
+    const data = {
+      protocol: ProtocolKey,
+      type: type,
+      data: params,
+    }
+
+    logger.log(`[${location.hostname}:${isInIFrame()}] send:`, data)
+    win.postMessage(data, origin)
   }
 
 function isProtocol<T extends any[] = []>(data: any): data is ProtocolData<T> {

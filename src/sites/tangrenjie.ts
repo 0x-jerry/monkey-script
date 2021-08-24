@@ -1,27 +1,23 @@
-import { isDev } from '../config'
 import { ISiteEffectConfig } from '../globals'
 import { useSettingUI } from '../ui/render'
 import { isInIFrame, logger, waitUntil } from '../utils'
 import { createMsgSender, onMsg } from '../utils/conmunicate'
 import { IVideoHelperConfig } from '../video-helper/typing'
 import { initAutoPlay, initSkip } from '../video-helper'
-import RootComponent from './setting/Agefans.vue'
+import RootComponent from './setting/Tangrenjie.vue'
 
-const mainDomain = /agefans\.(cc|vip)/
+const mainDomain = /tangrenjie\.(tv)/
 
 export const conf: ISiteEffectConfig = {
   test: [
     // main domain
     mainDomain,
-    // iframe domain
-    /shankuwang\.com/,
   ],
   fn() {
-    if (isDev()) {
-      unsafeWindow.onbeforeunload = () => {
-        return '别跑了'
-      }
-    }
+    unsafeWindow.onkeydown =
+      unsafeWindow.onkeyup =
+      unsafeWindow.onkeypress =
+        () => {}
 
     if (isInIFrame()) {
       let initialized = false

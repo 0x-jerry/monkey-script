@@ -1,6 +1,6 @@
 import { ISiteEffectConfig } from '../globals'
 import { useSettingUI } from '../ui/render'
-import NunuyyVue from './setting/Nunuyy.vue'
+import RootComponent from './setting/Nunuyy.vue'
 
 const mainDomain = /nunuyy\.(cc|vip)/
 
@@ -10,6 +10,6 @@ export const conf: ISiteEffectConfig = {
     mainDomain,
   ],
   fn() {
-    useSettingUI(NunuyyVue)
+    useSettingUI(RootComponent)
   },
 }
