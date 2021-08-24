@@ -1,25 +1,25 @@
 <template>
   <div>
-    <div>
+    <div class="conf-line">
       <label>
         <input type="checkbox" v-model="conf.autoPlay" />
         <span> 自动播放 </span>
       </label>
     </div>
-    <div class="group">
-      <div>
+    <div class="conf-group">
+      <div class="conf-line">
         <label>
           <input type="checkbox" v-model="conf.skip.enable" />
           <span> 跳过片头/片尾 </span>
         </label>
       </div>
-      <div>
+      <div class="conf-line">
         <label>
           <span> 片头： </span>
           <input type="number" v-model.number="conf.skip.beforeSkipTs" />
         </label>
       </div>
-      <div>
+      <div class="conf-line">
         <label>
           <span> 片尾： </span>
           <input type="number" v-model.number="conf.skip.afterSkipTs" />
@@ -58,5 +58,12 @@ onMounted(() => {
 <style scoped>
 input[type='checkbox'] {
   appearance: button;
+}
+
+.conf-group {
+}
+
+.conf-line {
+  margin: 4px 0;
 }
 </style>
