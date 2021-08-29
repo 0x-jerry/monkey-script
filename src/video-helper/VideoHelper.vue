@@ -11,6 +11,7 @@
         <input type="checkbox" v-model="conf.autoFullScreen" />
         <span> 自动全屏 </span>
       </label>
+      <button @click="emit('fullscreen')">伪全屏</button>
     </div>
     <div class="conf-group">
       <div class="conf-line">
@@ -55,7 +56,7 @@ const [conf] = getConfig({
   },
 })
 
-const emit = defineEmits(['init'])
+const emit = defineEmits(['init', 'fullscreen'])
 
 onMounted(() => {
   emit('init', conf)

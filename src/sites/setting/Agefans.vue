@@ -1,5 +1,5 @@
 <template>
-  <VideoHelper @init="init" />
+  <VideoHelper @init="init" @fullscreen="fakeFullscreen" />
 </template>
 
 <script setup lang="ts">
@@ -27,6 +27,13 @@ function playNextVideo() {
 onKeydown('esc', () => {
   exitFakeFullscreen()
 })
+
+function fakeFullscreen() {
+  if (!getCurrentFullscreen()) {
+    const iframe = document.querySelector('iframe')!
+    requestFakeFullscreen(iframe)
+  }
+}
 
 async function init(conf: IVideoHelperConfig) {
   const iframe = document.querySelector('iframe')!

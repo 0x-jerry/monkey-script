@@ -2,7 +2,8 @@
   <div class="root" :class="{ active: data.isActive }">
     <div class="setting-content">
       <div class="setting-icon" @click="toggle">
-        <i-ph-gear class="gear" />
+        <i-ph-gear-fill v-if="data.isActive" class="gear" />
+        <i-ph-gear v-else class="gear" />
       </div>
       <div class="content-wrapper">
         <div v-if="isDev()">
@@ -71,6 +72,10 @@ onKeydown('meta + .', toggle)
   }
 
   &.active .setting-content {
+    transform: translateX(0);
+  }
+
+  .setting-content:hover {
     transform: translateX(0);
   }
 
