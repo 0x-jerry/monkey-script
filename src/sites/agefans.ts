@@ -6,7 +6,6 @@ import { createMsgSender, onMsg } from '../utils/conmunicate'
 import { IVideoHelperConfig } from '../video-helper/typing'
 import { initConfig } from '../video-helper'
 import RootComponent from './setting/Agefans.vue'
-import { sleep } from '@0x-jerry/lib'
 
 const mainDomain = /agefans\.(cc|vip)/
 
