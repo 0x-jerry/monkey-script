@@ -58,7 +58,7 @@ export function initConfig(
   })
 }
 
-const BACKUP_ATTR = '0x-jerry-backup'
+const BACKUP_ATTR = 'data-x-backup'
 
 let currentFullscreen: HTMLElement | null = null
 
@@ -67,6 +67,10 @@ export function getCurrentFullscreen() {
 }
 
 export function requestFakeFullscreen(el: HTMLElement) {
+  if (currentFullscreen) {
+    return
+  }
+
   el.setAttribute(BACKUP_ATTR, el.getAttribute('style') || '')
 
   el.style.top = '0'
