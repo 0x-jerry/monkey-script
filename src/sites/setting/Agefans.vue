@@ -35,6 +35,10 @@ async function init(conf: IVideoHelperConfig) {
     playNextVideo()
   })
 
+  onMsg('fullscreen', () => {
+    iframe.requestFullscreen()
+  })
+
   return
 }
 </script>

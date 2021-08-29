@@ -12,7 +12,7 @@ export function initConfig(
     const needPlay = video.paused && video.currentTime < 1
 
     if (conf.autoFullScreen) {
-      sleep(1000).then(() => fullscreen?.())
+      fullscreen?.()
     }
 
     if (!needPlay) {
