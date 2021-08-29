@@ -1,10 +1,10 @@
 import { isDev } from '../config'
 import { ISiteEffectConfig } from '../globals'
 import { useSettingUI } from '../ui/render'
-import { isInIFrame, logger, waitUntil } from '../utils'
+import { isInIFrame, waitUntil } from '../utils'
 import { createMsgSender, onMsg } from '../utils/conmunicate'
 import { IVideoHelperConfig } from '../video-helper/typing'
-import { initAutoPlay, initSkip } from '../video-helper'
+import { initSkip } from '../video-helper'
 import RootComponent from './setting/Agefans.vue'
 
 const mainDomain = /agefans\.(cc|vip)/
@@ -35,11 +35,12 @@ export const conf: ISiteEffectConfig = {
 
         const video = document.querySelector('video')!
 
-        initAutoPlay(video, conf, async () => {
-          return document.documentElement.requestFullscreen()
-        })
-
-        initSkip(video, conf, () => sendMsg('play-next-video'))
+        initSkip(
+          video,
+          conf,
+          () => sendMsg('play-next-video'),
+          () => document.documentElement.requestFullscreen()
+        )
       })
     }
 
