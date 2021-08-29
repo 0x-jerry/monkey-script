@@ -18,9 +18,9 @@ export const conf: ISiteEffectConfig = {
   ],
   fn() {
     if (isDev()) {
-      unsafeWindow.onbeforeunload = () => {
-        return '别跑了'
-      }
+      // unsafeWindow.onbeforeunload = () => {
+      //   return '别跑了'
+      // }
     }
 
     if (isInIFrame()) {

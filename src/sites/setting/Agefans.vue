@@ -6,7 +6,14 @@
 import clone from 'clone'
 import { waitUntil } from '../../utils'
 import { createMsgSender, onMsg } from '../../utils/conmunicate'
-import { IVideoHelperConfig, VideoHelper } from '../../video-helper'
+import { onKeydown } from '../../utils/onKeydown'
+import {
+  exitFakeFullscreen,
+  getCurrentFullscreen,
+  IVideoHelperConfig,
+  requestFakeFullscreen,
+  VideoHelper,
+} from '../../video-helper'
 
 function playNextVideo() {
   const current = document.querySelector('.movurl[style*=block] ul li a[style]')
@@ -16,6 +23,10 @@ function playNextVideo() {
       ?.firstElementChild as HTMLDivElement
   )?.click()
 }
+
+onKeydown('esc', () => {
+  exitFakeFullscreen()
+})
 
 async function init(conf: IVideoHelperConfig) {
   const iframe = document.querySelector('iframe')!
@@ -36,8 +47,8 @@ async function init(conf: IVideoHelperConfig) {
   })
 
   const tryFullScreen = async () => {
-    if (!document.fullscreenElement) {
-      await iframe.requestFullscreen()
+    if (!getCurrentFullscreen()) {
+      requestFakeFullscreen(iframe)
     }
   }
 
