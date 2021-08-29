@@ -2,7 +2,7 @@ import { sleep } from '@0x-jerry/lib'
 import { IVideoHelperConfig } from './typing'
 import VideoHelperVue from './VideoHelper.vue'
 
-export function initSkip(
+export function initConfig(
   video: HTMLVideoElement,
   conf: IVideoHelperConfig,
   playNext: () => any,
@@ -21,7 +21,7 @@ export function initSkip(
 
   const initLoaded = () => {
     if (conf.autoFullScreen) {
-      fullscreen?.()
+      sleep(1000).then(() => fullscreen?.())
     }
 
     if (video.currentTime < 1) {

@@ -4,8 +4,9 @@ import { useSettingUI } from '../ui/render'
 import { isInIFrame, waitUntil } from '../utils'
 import { createMsgSender, onMsg } from '../utils/conmunicate'
 import { IVideoHelperConfig } from '../video-helper/typing'
-import { initSkip } from '../video-helper'
+import { initConfig } from '../video-helper'
 import RootComponent from './setting/Agefans.vue'
+import { sleep } from '@0x-jerry/lib'
 
 const mainDomain = /agefans\.(cc|vip)/
 
@@ -18,9 +19,9 @@ export const conf: ISiteEffectConfig = {
   ],
   fn() {
     if (isDev()) {
-      unsafeWindow.onbeforeunload = () => {
-        return '别跑了'
-      }
+      // unsafeWindow.onbeforeunload = () => {
+      //   return '别跑了'
+      // }
     }
 
     if (isInIFrame()) {
@@ -35,11 +36,13 @@ export const conf: ISiteEffectConfig = {
 
         const video = document.querySelector('video')!
 
-        initSkip(
+        initConfig(
           video,
           conf,
           () => sendMsg('play-next-video'),
-          () => document.documentElement.requestFullscreen()
+          async () => {
+            document.documentElement.requestFullscreen()
+          }
         )
       })
     }

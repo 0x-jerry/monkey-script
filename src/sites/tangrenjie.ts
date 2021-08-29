@@ -3,7 +3,7 @@ import { useSettingUI } from '../ui/render'
 import { isInIFrame, logger, waitUntil } from '../utils'
 import { createMsgSender, onMsg } from '../utils/conmunicate'
 import { IVideoHelperConfig } from '../video-helper/typing'
-import { initSkip } from '../video-helper'
+import { initConfig } from '../video-helper'
 import RootComponent from './setting/Tangrenjie.vue'
 
 const mainDomain = /tangrenjie\.(tv)/
@@ -31,7 +31,7 @@ export const conf: ISiteEffectConfig = {
 
         const video = document.querySelector('video')!
 
-        initSkip(video, conf, () => sendMsg('play-next-video'))
+        initConfig(video, conf, () => sendMsg('play-next-video'))
       })
     }
 
