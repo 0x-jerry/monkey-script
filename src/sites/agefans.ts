@@ -32,7 +32,7 @@ export const conf: ISiteEffectConfig = {
         const sendMsg = createMsgSender(unsafeWindow.top, origin)
 
         unsafeWindow.addEventListener('keydown', (e) => {
-          sendMsg('key-down', e)
+          sendMsg('key-down', { code: e.code, key: e.key })
         })
 
         await waitUntil(() => !!document.querySelector('video'))
@@ -47,8 +47,8 @@ export const conf: ISiteEffectConfig = {
         )
       })
     } else {
-      onMsg('key-down', (e) => {
-        unsafeWindow.dispatchEvent(e)
+      onMsg('key-down', (opt) => {
+        unsafeWindow.dispatchEvent(new KeyboardEvent('keydown', opt))
       })
     }
 
