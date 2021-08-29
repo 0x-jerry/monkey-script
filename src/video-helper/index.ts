@@ -17,13 +17,12 @@ export function initConfig(
     await video.play()
     await sleep(500)
     await tryPlay()
-  }
-
-  const initLoaded = () => {
     if (conf.autoFullScreen) {
       sleep(1000).then(() => fullscreen?.())
     }
+  }
 
+  const initLoaded = () => {
     if (video.currentTime < 1) {
       tryPlay()
       return
