@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Useful Script
 // @namespace    http://tampermonkey.net/
-// @version      0.2.9
+// @version      0.2.10
 // @description  try to take over the world!
 // @author       0x-jerry
 // @match        http://*/*
