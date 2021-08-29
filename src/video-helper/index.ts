@@ -8,36 +8,37 @@ export function initSkip(
   playNext: () => any,
   fullscreen?: () => any
 ) {
+  const tryPlay = async () => {
+    const needPlay = video.paused && video.currentTime < 1
+    if (!needPlay) {
+      return
+    }
+
+    await video.play()
+    await sleep(500)
+    await tryPlay()
+  }
+
+  const initLoaded = () => {
+    if (conf.autoFullScreen) {
+      fullscreen?.()
+    }
+
+    if (video.currentTime < 1) {
+      tryPlay()
+      return
+    }
+  }
+
+  initLoaded()
+  video.addEventListener('load', initLoaded)
+
   video.addEventListener('timeupdate', () => {
     const restTime = video.duration - video.currentTime
 
-    if (video.currentTime < 2) {
-      if (conf.autoFullScreen) {
-        fullscreen?.()
-      }
-    }
-
-    if (conf.autoPlay) {
-      const tryPlay = async () => {
-        if (!needPlay) {
-          return
-        }
-
-        await video.play()
-        await sleep(500)
-        await tryPlay()
-      }
-
-      const needPlay = video.paused && video.currentTime < 1
-      if (needPlay) {
-        tryPlay()
-        return
-      }
-
-      if (restTime < 1) {
-        playNext()
-        return
-      }
+    if (conf.autoPlay && restTime < 1) {
+      playNext()
+      return
     }
 
     if (!conf.skip.enable) {
