@@ -31,6 +31,10 @@ export const conf: ISiteEffectConfig = {
 
         const sendMsg = createMsgSender(unsafeWindow.top, origin)
 
+        unsafeWindow.addEventListener('keydown', (e) => {
+          sendMsg('key-down', e)
+        })
+
         await waitUntil(() => !!document.querySelector('video'))
 
         const video = document.querySelector('video')!
@@ -41,6 +45,10 @@ export const conf: ISiteEffectConfig = {
           () => sendMsg('play-next-video'),
           () => sendMsg('fullscreen')
         )
+      })
+    } else {
+      onMsg('key-down', (e) => {
+        unsafeWindow.dispatchEvent(e)
       })
     }
 
