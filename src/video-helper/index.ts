@@ -58,9 +58,7 @@ export function initConfig(
   })
 }
 
-interface FakeStyle {
-  __backup_style__?: string | null
-}
+const BACKUP_ATTR = '0x-jerry-backup'
 
 let currentFullscreen: HTMLElement | null = null
 
@@ -68,8 +66,8 @@ export function getCurrentFullscreen() {
   return currentFullscreen
 }
 
-export function requestFakeFullscreen(el: HTMLElement & FakeStyle) {
-  el.__backup_style__ = el.getAttribute('style')
+export function requestFakeFullscreen(el: HTMLElement) {
+  el.setAttribute(BACKUP_ATTR, el.getAttribute('style') || '')
 
   el.style.top = '0'
   el.style.left = '0'
@@ -78,15 +76,16 @@ export function requestFakeFullscreen(el: HTMLElement & FakeStyle) {
   el.style.width = '100vw'
   el.style.height = '100vh'
 
+  document.body.setAttribute(BACKUP_ATTR, document.body.style.overflow)
+  document.body.style.overflow = 'hidden'
   currentFullscreen = el
 }
 
-export function exitFakeFullscreen(
-  el: (HTMLElement & FakeStyle) | null = currentFullscreen
-) {
+export function exitFakeFullscreen(el: HTMLElement | null = currentFullscreen) {
   if (!el) return
 
-  el.setAttribute('style', el.__backup_style__ || '')
+  el.setAttribute('style', el.getAttribute(BACKUP_ATTR) || '')
+  document.body.style.overflow = document.body.getAttribute(BACKUP_ATTR) || ''
 
   currentFullscreen = null
 }
