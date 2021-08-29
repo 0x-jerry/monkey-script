@@ -4,7 +4,8 @@ import VideoHelperVue from './VideoHelper.vue'
 
 export function initAutoPlay(
   video: HTMLVideoElement,
-  conf: IVideoHelperConfig
+  conf: IVideoHelperConfig,
+  fullscreen?: () => Promise<void>
 ) {
   if (!conf.autoPlay) {
     return
@@ -20,6 +21,11 @@ export function initAutoPlay(
     await video.play()
     await sleep(500)
     await tryPlay()
+
+    if (conf.autoFullScreen) {
+      await sleep(500)
+      await fullscreen?.()
+    }
   }
 
   tryPlay()

@@ -6,6 +6,12 @@
         <span> 自动播放 </span>
       </label>
     </div>
+    <div class="conf-line">
+      <label>
+        <input type="checkbox" v-model="conf.autoFullScreen" />
+        <span> 自动全屏 </span>
+      </label>
+    </div>
     <div class="conf-group">
       <div class="conf-line">
         <label>
@@ -35,6 +41,7 @@ import { getConfig } from '../utils/siteConf'
 
 const [conf] = getConfig({
   autoPlay: false,
+  autoFullScreen: false,
   skip: {
     enable: false,
     /**

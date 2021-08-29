@@ -35,7 +35,9 @@ export const conf: ISiteEffectConfig = {
 
         const video = document.querySelector('video')!
 
-        initAutoPlay(video, conf)
+        initAutoPlay(video, conf, async () => {
+          return document.documentElement.requestFullscreen()
+        })
 
         initSkip(video, conf, () => sendMsg('play-next-video'))
       })
