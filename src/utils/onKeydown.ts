@@ -1,7 +1,7 @@
 import { createKeyboardHandler } from '@0x-jerry/lib'
 import { onMounted, onUnmounted } from 'vue'
 
-const handleKeydown = createKeyboardHandler((fn) =>
+export const handleKeydown = createKeyboardHandler((fn) =>
   window.addEventListener('keydown', (e) => {
     fn(e)
   })

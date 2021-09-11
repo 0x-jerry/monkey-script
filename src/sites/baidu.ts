@@ -1,6 +1,6 @@
 import { ISiteEffectConfig } from '../globals'
 import { useSettingUI } from '../ui/render'
-import { onKeydown } from '../utils/onKeydown'
+import { handleKeydown } from '../utils/onKeydown'
 import RootComponent from './setting/Baidu.vue'
 
 export const conf: ISiteEffectConfig = {
@@ -8,7 +8,7 @@ export const conf: ISiteEffectConfig = {
   fn() {
     useSettingUI(RootComponent)
 
-    onKeydown('meta, /', () => {
+    handleKeydown('meta, /', () => {
       console.log('help')
     })
   },
