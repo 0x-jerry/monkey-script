@@ -13,6 +13,7 @@ export const conf: ISiteEffectConfig = {
   test: [
     // main domain
     mainDomain,
+    /agemys\.com/,
     // iframe domain
     /shankuwang\.com/,
   ],
@@ -29,7 +30,7 @@ export const conf: ISiteEffectConfig = {
         if (initialized) return
         initialized = true
 
-        const sendMsg = createMsgSender(unsafeWindow.top, origin)
+        const sendMsg = createMsgSender(unsafeWindow.top!, origin)
 
         unsafeWindow.addEventListener('keydown', (e) => {
           sendMsg('key-down', { code: e.code, key: e.key })

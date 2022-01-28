@@ -1,8 +1,9 @@
 import { resolve } from 'path'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import Components from 'vite-plugin-components'
-import ViteIcons, { ViteIconsResolver } from 'vite-plugin-icons'
+import Components from 'unplugin-vue-components/vite'
+import ViteIcons from 'unplugin-icons/vite'
+import iconResolver from 'unplugin-icons/resolver'
 
 export default defineConfig((conf) => {
   const isDev = conf.mode == 'dev'
@@ -12,7 +13,7 @@ export default defineConfig((conf) => {
     plugins: [
       vue(),
       Components({
-        customComponentResolvers: ViteIconsResolver(),
+        resolvers: [iconResolver()],
       }),
       ViteIcons(),
     ],
