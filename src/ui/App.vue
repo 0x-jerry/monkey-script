@@ -19,7 +19,7 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive } from '@vue/reactivity'
+import { reactive } from 'vue'
 import { isDev } from '../config'
 import { logger } from '../utils'
 import { onKeydown } from '../utils/onKeydown'

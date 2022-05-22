@@ -1,4 +1,4 @@
-import { sleep } from '@0x-jerry/lib'
+import { sleep } from '@0x-jerry/utils'
 import { IVideoHelperConfig } from './typing'
 import VideoHelperVue from './VideoHelper.vue'
 

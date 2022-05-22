@@ -37,7 +37,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from '@vue/runtime-core'
+import { onMounted } from 'vue'
 import { getConfig } from '../utils/siteConf'
 
 const [conf] = getConfig({

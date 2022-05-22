@@ -1,4 +1,4 @@
-import { EventEmitter } from '@0x-jerry/lib'
+import { EventEmitter } from '@0x-jerry/utils'
 import { isInIFrame, logger } from '.'
 
 const ProtocolKey = '__0x_user_script__'

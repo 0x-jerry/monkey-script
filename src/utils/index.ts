@@ -1,4 +1,4 @@
-import { createSimpleLogger } from '@0x-jerry/lib'
+import { createSimpleLogger } from '@0x-jerry/utils'
 
 export const logger = createSimpleLogger('x')
 
