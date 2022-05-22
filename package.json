@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "vite build -m dev",
     "build": "vite build",
-    "release": "sh scripts/release.sh"
+    "release": "x-release"
   },
   "dependencies": {
     "@0x-jerry/utils": "^1.8.0",
@@ -16,6 +16,7 @@
     "vue": "^3.2.35"
   },
   "devDependencies": {
+    "@0x-jerry/x-release": "^0.3.6",
     "@iconify/json": "^2.1.47",
     "@types/clone": "^2.1.1",
     "@types/lodash": "^4.14.182",

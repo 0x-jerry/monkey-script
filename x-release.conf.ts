@@ -1,14 +1,23 @@
-const pkg = require('../package.json')
-const fs = require('fs/promises')
-const path = require('path')
-const semver = require('semver')
+import { defineConfig } from '@0x-jerry/x-release'
+import path from 'node:path'
+import fs from 'node:fs/promises'
 
-pkg.version = semver.inc(pkg.version, 'patch')
+export default defineConfig({
+  sequence: [
+    'npm:build',
+    'pkg.update.version',
+    (ctx) => updateVersion(ctx.nextVersion),
+    'git.commit',
+    'git.tag',
+    'git.push',
+  ],
+})
 
-const tpl = `// ==UserScript==
+async function updateVersion(version: string) {
+  const tpl = `// ==UserScript==
 // @name         Useful Script
 // @namespace    http://tampermonkey.net/
-// @version      ${pkg.version}
+// @version      ${version}
 // @description  try to take over the world!
 // @author       0x-jerry
 // @match        http://*/*
@@ -32,12 +41,6 @@ window.__0x_jerry_prod__ = true
   GM_addStyle(css)
 })();
 `
-
-main()
-
-async function main() {
-  await fs.writeFile(path.resolve('package.json'), JSON.stringify(pkg, null, 2))
-
   await fs.writeFile(path.resolve('index.user.js'), tpl, {
     encoding: 'utf-8',
   })
