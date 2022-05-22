@@ -1,13 +1,12 @@
 // ==UserScript==
 // @name         Useful Script
 // @namespace    http://tampermonkey.net/
-// @version      0.2.15
+// @version      0.2.17
 // @description  try to take over the world!
 // @author       0x-jerry
 // @match        http://*/*
 // @match        https://*/*
 // @icon         https://www.google.com/s2/favicons?domain=tampermonkey.net
-// @updateURL    https://raw.githubusercontent.com/0x-jerry/monkey-script/main/index.user.js
 // @downloadURL  https://raw.githubusercontent.com/0x-jerry/monkey-script/main/index.user.js
 
 // @require      dist/0x-jerry.umd.js
