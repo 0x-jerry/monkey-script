@@ -7,6 +7,7 @@
 // @match        http://*/*
 // @match        https://*/*
 // @icon         https://www.google.com/s2/favicons?domain=tampermonkey.net
+// @updateURL    https://raw.githubusercontent.com/0x-jerry/monkey-script/main/index.user.js
 // @downloadURL  https://raw.githubusercontent.com/0x-jerry/monkey-script/main/index.user.js
 
 // @require      dist/0x-jerry.umd.js
