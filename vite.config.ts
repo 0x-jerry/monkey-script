@@ -18,6 +18,8 @@ export default defineConfig((conf) => {
       ViteIcons(),
     ],
     build: {
+      target: 'modules',
+      minify: !isDev,
       lib: {
         entry: resolve('src/index.ts'),
         name: '0xJerry',
@@ -25,5 +27,6 @@ export default defineConfig((conf) => {
       },
       watch: isDev ? {} : null,
     },
+    define: { 'process.env.NODE_ENV': '"production"' },
   }
 })
