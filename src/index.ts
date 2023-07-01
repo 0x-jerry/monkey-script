@@ -5,7 +5,7 @@ import { start, toArray } from './utils/index'
 start(async () => {
   buildInfo()
 
-  const imports = import.meta.globEager('./sites/*.ts')
+  const imports = import.meta.glob('./sites/*.ts', { eager: true })
 
   const modules = Object.values(imports).map((t) => t.conf)
 

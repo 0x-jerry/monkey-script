@@ -2,13 +2,19 @@ import { Component, createApp } from 'vue'
 import { isInIFrame } from '../utils'
 import App from './App.vue'
 
-export const useSettingUI = (comp: Component) => {
+export const useSettingUI = (comp?: Component) => {
   if (isInIFrame()) {
     return
   }
 
-  const app = document.createElement('div')
-  document.body.append(app)
+  const appEl = document.createElement('div')
+  document.body.append(appEl)
 
-  createApp(App).component('setting-content', comp).mount(app)
+  const app = createApp(App)
+
+  if (comp) {
+    app.component('setting-content', comp)
+  }
+
+  app.mount(appEl)
 }

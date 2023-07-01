@@ -7,6 +7,13 @@
       </div>
       <div class="content-wrapper">
         <div v-if="isDev()">
+          <div class="logs" v-if="isDev()">
+            {{ logStacks.length }}
+            <div v-for="item in logStacks" :key="item.id">
+              {{ item.logs.map(formatLog).join(' ') }}
+            </div>
+          </div>
+          <br>
           <div>
             <button @click="clearSiteConfig">删除配置</button>
           </div>
@@ -21,9 +28,13 @@
 <script lang="ts" setup>
 import { reactive } from 'vue'
 import { isDev } from '../config'
-import { logger } from '../utils'
+import { logStacks, logger } from '../utils'
 import { onKeydown } from '../utils/onKeydown'
 import { clearSiteConfig } from '../utils/siteConf'
+
+function formatLog(o: unknown) {
+  return String(o)
+}
 
 const data = reactive({
   isActive: isDev(),
@@ -103,5 +114,10 @@ onKeydown('meta + .', toggle)
     font-size: 20px;
     transition: transform ease 1s;
   }
+}
+
+.logs {
+  max-height: 100px;
+  overflow: auto;
 }
 </style>

@@ -1,32 +1,63 @@
+import { toArray } from '@0x-jerry/utils'
 import { ISiteEffectConfig } from '../globals'
+import { waitUntil } from '../utils'
+
+const Configs = [
+  {
+    site: /vip\.sp-flv\.com/,
+    el: ['.m-player'],
+  },
+]
 
 export const conf: ISiteEffectConfig = {
   test: /./,
-  fn() {
+  async fn() {
     const factor = {
       timeline: 0.01,
       volume: 0.0001,
     }
 
-    document.querySelectorAll('video').forEach((el) => {
-      el.addEventListener('wheel', (e) => {
-        e.preventDefault()
+    for (const config of Configs) {
+      if (!config.site.test(location.hostname)) {
+        continue
+      }
 
-        if (e.deltaX) {
-          el.currentTime = toRange(
-            el.currentTime + e.deltaX * factor.timeline,
-            0,
-            el.duration
-          )
-        }
+      const els = toArray(config.el)
 
-        if (e.deltaY) {
-          el.volume = toRange(el.volume - e.deltaY * factor.volume, 0, 1)
-        }
+      els.forEach(async (selector) => {
+        await waitUntil(() => !!document.querySelectorAll(selector).length)
 
-        console.log(el.volume, el.currentTime)
+        document.querySelectorAll(selector).forEach(async (el) => {
+          const getVideoEl = () =>
+            el instanceof HTMLVideoElement ? el : el.querySelector('video')
+
+          await waitUntil(() => !!getVideoEl())
+
+          const videoEl = getVideoEl()
+
+          if (!videoEl) return
+          ;(el as HTMLElement).addEventListener('wheel', (e) => {
+            e.preventDefault()
+
+            if (e.deltaX) {
+              videoEl.currentTime = toRange(
+                videoEl.currentTime + e.deltaX * factor.timeline,
+                0,
+                videoEl.duration
+              )
+            }
+
+            if (e.deltaY) {
+              videoEl.volume = toRange(
+                videoEl.volume - e.deltaY * factor.volume,
+                0,
+                1
+              )
+            }
+          })
+        })
       })
-    })
+    }
   },
 }
 
