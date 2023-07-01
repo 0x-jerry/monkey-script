@@ -2,7 +2,8 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "Bundler",
+    "exactOptionalPropertyTypes": true,
     "strict": true,
     "jsx": "preserve",
     "sourceMap": true,

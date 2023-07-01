@@ -1,14 +1,7 @@
-import { createSimpleLogger } from '@0x-jerry/utils'
+import { createSimpleLogger, sleep } from '@0x-jerry/utils'
+export { toArray, sleep } from '@0x-jerry/utils'
 
 export const logger = createSimpleLogger('x')
-
-export const toArray = <T>(t: T | T[]): T[] => (Array.isArray(t) ? t : [t])
-
-export const sleep = (ts = 1000) => {
-  return new Promise((resolve) => {
-    setTimeout(resolve, ts)
-  })
-}
 
 export const start = async (fn: () => any) => {
   await sleep(1)
